@@ -3,6 +3,7 @@ package dev.lucas.runnerz.run;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +15,8 @@ public class RunRepository {
     private List<Run> runs = new ArrayList<>();
 
     // Find By Id
-    Run findById(Integer id) {
-        return runs.stream().filter(run -> run.id().equals(id)).findFirst().orElse(null);
+    Optional<Run> findById(Integer id) {
+        return runs.stream().filter(run -> run.id().equals(id)).findFirst();
     }
 
     // Find All
