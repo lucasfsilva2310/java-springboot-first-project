@@ -24,6 +24,25 @@ public class RunRepository {
         return runs;
     }
 
+    // Create
+    void create(Run run) {
+        runs.add(run);
+    }
+
+    // Update
+    void update(Run run, Integer id) {
+        Optional<Run> runOptional = this.findById(id);
+
+        if (runOptional.isPresent()) {
+            runs.set(runs.indexOf(runOptional.get()), run);
+        }
+    }
+
+    // Delete
+    void delete(Integer id) {
+        runs.removeIf(run -> run.id().equals(id));
+    }
+
     // Run after depency injection. Type of initialization. Good for DB in memory
     // for testing
     @PostConstruct
