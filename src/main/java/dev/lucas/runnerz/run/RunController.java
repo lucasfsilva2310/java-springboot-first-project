@@ -28,45 +28,43 @@ public class RunController {
         this.runRepository = runRepository;
     }
 
-    // Find all
-    @GetMapping("")
-    List<Run> findAll() {
-        return runRepository.findAll();
-    }
+    // COMMENTING ALL CODE RELATED TO CONTROLLER METHODS TO IN-MEMORY DATABASE
+    // WITHOUT CONNECTION
+    // // Find all
+    // @GetMapping("")
+    // List<Run> findAll() {
+    // return runRepository.findAll();
+    // }
+    // // Find by id
+    // @GetMapping("/{id}")
+    // Run findAll(@PathVariable Integer id) {
 
-    // Find by id
-    @GetMapping("/{id}")
-    Run findAll(@PathVariable Integer id) {
+    // Optional<Run> run = runRepository.findById(id);
 
-        Optional<Run> run = runRepository.findById(id);
+    // if (run.isEmpty()) {
+    // throw new RunNotFoundException();
+    // }
 
-        if (run.isEmpty()) {
-            throw new RunNotFoundException();
-        }
-
-        return run.get();
-    }
-
-    // Create
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("")
-    void create(
-            @Valid @RequestBody Run run) {
-        runRepository.create(run);
-    }
-
-    // Update
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/{id}")
-    void update(@Valid @RequestBody Run run, @PathVariable Integer id) {
-        runRepository.update(run, id);
-    }
-
-    // Delete
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    void delete(@PathVariable Integer id) {
-        runRepository.delete(id);
-    }
+    // return run.get();
+    // }
+    // // Create
+    // @ResponseStatus(HttpStatus.CREATED)
+    // @PostMapping("")
+    // void create(
+    // @Valid @RequestBody Run run) {
+    // runRepository.create(run);
+    // }
+    // // Update
+    // @ResponseStatus(HttpStatus.NO_CONTENT)
+    // @PutMapping("/{id}")
+    // void update(@Valid @RequestBody Run run, @PathVariable Integer id) {
+    // runRepository.update(run, id);
+    // }
+    // // Delete
+    // @ResponseStatus(HttpStatus.NO_CONTENT)
+    // @DeleteMapping("/{id}")
+    // void delete(@PathVariable Integer id) {
+    // runRepository.delete(id);
+    // }
 
 }

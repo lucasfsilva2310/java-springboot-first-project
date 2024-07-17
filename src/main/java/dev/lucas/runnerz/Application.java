@@ -23,12 +23,14 @@ public class Application {
 		LOG.info("Application started successfully.");
 	}
 
-	@Bean
-	CommandLineRunner runner() {
-		return args -> {
-			Run run = new Run(1, "Run 1", LocalDateTime.now(), LocalDateTime.now(), 10, Location.INDOOR);
+	// Create a CommandLineRunner to execute before starting server
+	// @Bean
+	// CommandLineRunner runner() {
+	// return args -> {
+	// Run run = new Run(1, "Run 1", LocalDateTime.now(), LocalDateTime.now(), 10,
+	// Location.INDOOR);
 
-			LOG.info("Run: " + run);
-		};
-	}
+	// LOG.info("Run: " + run);
+	// };
+	// }
 }
