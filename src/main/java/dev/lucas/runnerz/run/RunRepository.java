@@ -70,6 +70,18 @@ public class RunRepository {
                 .list();
     }
 
+    public long count() {
+        return jdbcClient.sql("SELECT COUNT(*) FROM Run")
+                .query((runs, rowNum) -> runs.getLong(1))
+                .single();
+    }
+
+    public void saveAll(List<Run> runs) {
+        for (Run run : runs) {
+            this.create(run);
+        }
+    }
+
     // ALL CODE RELATED TO RUNNING IN-MEMORY DATABASE WITHOUT NEEDING A DATABASE
     // CONNECTION
 

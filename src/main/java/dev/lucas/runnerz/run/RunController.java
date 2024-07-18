@@ -36,7 +36,7 @@ public class RunController {
 
     // Find by id
     @GetMapping("/{id}")
-    Run findAll(@PathVariable Integer id) {
+    Run findById(@PathVariable Integer id) {
 
         Optional<Run> run = runRepository.findById(id);
 
