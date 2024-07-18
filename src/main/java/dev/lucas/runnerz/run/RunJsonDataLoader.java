@@ -13,6 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class RunJsonDataLoader implements CommandLineRunner {
+    // Because RunJsonDataLoader implements CommandLineRunner it runs automatically
+    // before server startup
 
     private static final Logger LOG = LoggerFactory.getLogger(RunJsonDataLoader.class);
     public final RunRepository runRepository;
