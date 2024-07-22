@@ -1,1 +1,1 @@
-SELECT * FROM run ORDER BY id;
+SELECT * FROM Run ORDER BY id;

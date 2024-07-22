@@ -1,7 +1,6 @@
 package dev.lucas.runnerz.run;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
 
