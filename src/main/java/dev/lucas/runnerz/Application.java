@@ -1,16 +1,18 @@
 package dev.lucas.runnerz;
 
-// import dev.lucas.runnerz.run.*;
-// import java.time.LocalDateTime;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-// import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-// import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestClient;
+import org.springframework.web.client.support.RestClientAdapter;
+import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
-// import dev.lucas.runnerz.run.Run;
+import dev.lucas.runnerz.user.UserHttpClient;
+
+import dev.lucas.runnerz.user.User;
 
 @SpringBootApplication
 public class Application {
@@ -23,14 +25,23 @@ public class Application {
 		LOG.info("Application started successfully.");
 	}
 
-	// Create a CommandLineRunner to execute before starting server
-	// @Bean
-	// CommandLineRunner runner() {
-	// return args -> {
-	// Run run = new Run(1, "Run 1", LocalDateTime.now(), LocalDateTime.now(), 10,
-	// Location.INDOOR);
+	// Declaring a userHttpClient build to be used as a bean
+	// Will be user for UserHttpClient class
+	@Bean
+	UserHttpClient userHttpClient() {
+		RestClient restClient = RestClient.create("https://jsonplaceholder.typicode.com");
+		HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient))
+				.build();
+		return factory.createClient(UserHttpClient.class);
+	}
 
-	// LOG.info("Run: " + run);
-	// };
-	// }
+	// Create a CommandLineRunner to execute before starting server
+	// Testing Users http client
+	@Bean
+	CommandLineRunner runner(UserHttpClient client) {
+		return args -> {
+			User user = client.findById(1);
+			LOG.info("User1: " + user.toString());
+		};
+	}
 }
