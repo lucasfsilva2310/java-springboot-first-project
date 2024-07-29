@@ -3,14 +3,6 @@ package dev.lucas.runnerz.run;
 import java.util.List;
 import java.util.Optional;
 
-// import java.time.LocalDateTime;
-// import java.util.ArrayList;
-// import java.util.List;
-// import java.util.Optional;
-// import jakarta.annotation.PostConstruct;
-
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
@@ -18,8 +10,6 @@ import org.springframework.util.Assert;
 @Repository
 public class JdbcClientRunRepository {
 
-    // private static final Logger LOG =
-    // LoggerFactory.getLogger(RunRepository.class);
     private final JdbcClient jdbcClient;
 
     // Jdbc CLient to talk to database
