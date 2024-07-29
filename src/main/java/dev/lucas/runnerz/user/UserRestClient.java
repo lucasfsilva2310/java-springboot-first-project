@@ -6,6 +6,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
+// Using Rest Client
+// With this we need to create all the methods we would want to have
 @Component
 public class UserRestClient {
     private final RestClient restClient;
